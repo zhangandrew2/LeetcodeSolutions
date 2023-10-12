@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+using namespace std;
 
 class Solution {
 public:
@@ -19,8 +20,8 @@ public:
 
 int main(){
     int test[] = {7,1,5,3,6,4};
-    vector<int> prices = test;
+    vector<int> prices (test, test + sizeof(test)/sizeof(int));
     Solution tester;
-    cout << "profits: " << tester.maxProfit(&prices);
+    cout << "profits: " << tester.maxProfit(prices);
 
 }
