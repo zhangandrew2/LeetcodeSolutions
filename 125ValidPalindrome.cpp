@@ -6,22 +6,19 @@ using namespace std;
 class Solution {
 public:
     bool isPalindrome(string s) {
-        if (s.length()<2)
-            return true;
         int tailindex = s.length()-1;
         int headindex = 0;
         while (headindex < tailindex){
-            while(!isalnum(s[headindex]) && headindex < s.length()-1){
+            if(!isalnum(s[headindex])){
                 headindex++;
+                continue;
             }
-            while(!isalnum(s[tailindex]) && tailindex > 0){
+            if(!isalnum(s[tailindex])){
                 tailindex--;
+                continue;
             }
-            if (isalnum(s[headindex]) &&  isalnum(s[tailindex])){
-                s[headindex] = toupper(s[headindex]);
-                s[tailindex] = toupper(s[tailindex]);
-                if (s[headindex] != s[tailindex])
-                    return false;
+            if (toupper(s[headindex]) != toupper(s[tailindex])){
+                return false;
             }
             headindex++;
             tailindex--;
