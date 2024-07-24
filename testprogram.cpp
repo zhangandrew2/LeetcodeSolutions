@@ -3,6 +3,6 @@
 using namespace std;
 
 int main(){
-    int counter[2]={};
-        cout << counter[0] << "," << counter[1];
+    string x = "abcd";
+        cout << x.substr(0,1);
 }

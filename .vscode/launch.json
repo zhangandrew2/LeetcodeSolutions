@@ -1,24 +1,25 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "C/C++ Runner: Debug Session",
-      "type": "cppdbg",
-      "request": "launch",
-      "args": [],
-      "stopAtEntry": false,
-      "externalConsole": true,
-      "cwd": "c:/Users/zhang/Documents/CS workspace/LeetcodeSolutions",
-      "program": "c:/Users/zhang/Documents/CS workspace/LeetcodeSolutions/build/Debug/outDebug",
-      "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
-      "setupCommands": [
+    "version": "0.2.0",
+    "configurations": [
         {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
+            "name": "C++ Launch (LLDB)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "/Users/andrewz/Documents/Leetcode/LeetcodeSolutions/36ValidSudoku", 
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "/Users/andrewz/Documents/Leetcode/LeetcodeSolutions",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "miDebuggerPath": "/usr/bin/lldb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for lldb",
+                    "text": "settings set target.inline-breakpoint-strategy always",
+                    "ignoreFailures": true
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
