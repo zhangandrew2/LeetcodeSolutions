@@ -1,0 +1,62 @@
+#include <vector>
+#include <iostream>
+#include <cassert>
+
+class Solution {
+public:
+    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+        int m = obstacleGrid.size();
+        int n = obstacleGrid[0].size();
+        vector<vector<int>> gridcnt(m,vector<int>(n,0));
+        if (obstacleGrid[0][0] == 1){
+            return 0;
+        }
+        gridcnt[0][0] = 1;
+        for (int i = 1; i < n;i++){
+            if(obstacleGrid[0][i] == 0)
+                gridcnt[0][i] = 1;
+            else{
+                break;
+            }
+        }
+        for (int i = 1; i < m;i++){
+            if(obstacleGrid[i][0] == 0)
+                gridcnt[i][0] = 1;
+            else{
+                break;
+            }
+        }
+        for (int row = 1; row < m;row++){
+            for (int col = 1; col < n; col++){
+                if(obstacleGrid[row][col] == 1){
+                    gridcnt[row][col] = 0;
+                }
+                else{
+                    gridcnt[row][col] = gridcnt[row-1][col] + gridcnt[row][col-1];
+                }
+                
+            }
+        }
+        return gridcnt[m-1][n-1];
+    }
+};
+
+int main(){
+    Solution sol;
+    vector<vector<int>> obstacleGrid = {{0,0,0},{0,1,0},{0,0,0}};
+    int result = sol.uniquePathsWithObstacles(obstacleGrid);
+    cout << "Unique Paths: " << result << endl; // Expected output: 2
+    assert(result == 2);
+
+    obstacleGrid = {{0,1},{0,0}};
+    result = sol.uniquePathsWithObstacles(obstacleGrid);
+    cout << "Unique Paths: " << result << endl; // Expected output: 1
+    assert(result == 1);
+
+    obstacleGrid = {{1}};
+    result = sol.uniquePathsWithObstacles(obstacleGrid);
+    cout << "Unique Paths: " << result << endl; // Expected output: 0
+    assert(result == 0);
+
+    return 0;
+}
